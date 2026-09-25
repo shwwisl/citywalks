@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>田子坊建筑导览 · 建筑篇</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛</text></svg>">
+<meta name="description" content="田子坊建筑导览：石库门速成课、过街楼、弄堂工厂，附现场打卡清单与命名密码。">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* 本页专属：建筑对比表 */
+  .cmp{
+    width:100%;border-collapse:collapse;
+    background:var(--card);border-radius:16px;overflow:hidden;
+    box-shadow:0 3px 14px rgba(90,70,50,.06);margin:14px 0;
+  }
+  .cmp th{
+    background:var(--terra);color:#fff;
+    padding:11px;font-size:14px;
+  }
+  .cmp td{
+    padding:11px 14px;border-bottom:1px solid var(--line);
+    font-size:14px;vertical-align:top;
+  }
+  .cmp tr:last-child td{border-bottom:none}
+  .cmp td:first-child{
+    font-weight:700;white-space:nowrap;color:var(--terra);
+  }
+  /* 看什么标签 */
+  .see{
+    background:#eef4f2;color:var(--tea);
+    font-size:13px;border-radius:10px;
+    padding:8px 12px;margin-top:10px;
+  }
+  .see b{color:var(--tea)}
+</style>
+</head>
+<body>
+
+<div class="page-head" data-deco="筑">
+  <a class="back" href="index.html">← 返回攻略</a>
+  <h1>田子坊建筑导览</h1>
+  <div class="sub">石库门 · 过街楼 · 弄堂工厂 · 一场活着的建筑博物馆之旅</div>
+</div>
+
+<nav class="topnav">
+  <a href="index.html">🏠 攻略</a>
+  <a href="food.html">🍜 美食</a>
+  <a href="history.html">📜 历史</a>
+  <a href="architecture.html" class="on">🏛 建筑</a>
+</nav>
+
+<div class="wrap">
+
+<section>
+  <div class="quote">
+    田子坊的建筑风格极为混杂——折中主义、新文艺复兴、现代主义、中国传统砖木、西班牙式、英国城堡式、巴洛克式……光<b>石库门就有 20 多种形态</b>。这不是规划出来的，而是 100 年法租界与华界交界处自然生长的结果。
+  </div>
+</section>
+
+<section>
+  <div class="toc">
+    <a href="#map"><span class="num">1</span>分布图</a>
+    <a href="#painter"><span class="num">2</span>画家楼彩蛋</a>
+    <a href="#six"><span class="num">3</span>六类必看建筑</a>
+    <a href="#shikumen"><span class="num">4</span>石库门速成课</a>
+    <a href="#naming"><span class="num">5</span>邨坊里弄密码</a>
+    <a href="#checklist"><span class="num">6</span>打卡清单</a>
+  </div>
+</section>
+
+<!-- ═══ ① 分布图 ═══ -->
+<section id="map">
+  <h2>① 建筑分布示意</h2>
+  <p class="lead">按路线顺序，边走边对照</p>
+  <div class="map-card">
+    <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="建筑分布">
+      <g stroke="#efe8dd" stroke-width="14" stroke-linecap="round">
+        <line x1="50" y1="270" x2="710" y2="270"/>
+        <line x1="130" y1="60" x2="130" y2="270"/>
+        <line x1="300" y1="50" x2="300" y2="270"/>
+        <line x1="470" y1="60" x2="470" y2="270"/>
+        <line x1="640" y1="50" x2="640" y2="270"/>
+        <line x1="50" y1="150" x2="710" y2="150"/>
+      </g>
+      <g font-family="PingFang SC,Microsoft YaHei,sans-serif">
+        <rect x="100" y="80" width="70" height="55" rx="6" fill="#c2542e" opacity=".9"/>
+        <text x="135" y="115" font-size="20" text-anchor="middle" fill="#fff">门</text>
+        <text x="135" y="160" font-size="13" text-anchor="middle" fill="#2d2a26" font-weight="bold">志成坊门楼</text>
+        <text x="135" y="176" font-size="11" text-anchor="middle" fill="#9a9288">1930 · 1号门</text>
+        <rect x="270" y="70" width="70" height="55" rx="6" fill="#3d6b5e" opacity=".9"/>
+        <text x="305" y="105" font-size="20" text-anchor="middle" fill="#fff">画</text>
+        <text x="305" y="150" font-size="13" text-anchor="middle" fill="#2d2a26" font-weight="bold">画家楼 5 号</text>
+        <text x="305" y="166" font-size="11" text-anchor="middle" fill="#9a9288">2025 焕新开放</text>
+        <rect x="440" y="80" width="70" height="55" rx="6" fill="#d9a441" opacity=".95"/>
+        <text x="475" y="115" font-size="20" text-anchor="middle" fill="#fff">天</text>
+        <text x="475" y="160" font-size="13" text-anchor="middle" fill="#2d2a26" font-weight="bold">天成里</text>
+        <text x="475" y="176" font-size="11" text-anchor="middle" fill="#9a9288">1930 · 12幢联排</text>
+        <rect x="610" y="70" width="70" height="55" rx="6" fill="#8a5a3b" opacity=".92"/>
+        <text x="645" y="105" font-size="20" text-anchor="middle" fill="#fff">过</text>
+        <text x="645" y="150" font-size="13" text-anchor="middle" fill="#2d2a26" font-weight="bold">过街楼</text>
+        <text x="645" y="166" font-size="11" text-anchor="middle" fill="#9a9288">弄堂独特风景</text>
+        <rect x="200" y="200" width="70" height="55" rx="6" fill="#5a6b7a" opacity=".92"/>
+        <text x="235" y="235" font-size="20" text-anchor="middle" fill="#fff">厂</text>
+        <text x="235" y="280" font-size="13" text-anchor="middle" fill="#2d2a26" font-weight="bold">弄堂工厂遗址</text>
+        <text x="235" y="296" font-size="11" text-anchor="middle" fill="#9a9288">老吊车·铁楼梯</text>
+        <rect x="370" y="200" width="70" height="55" rx="6" fill="#c2542e" opacity=".85"/>
+        <text x="405" y="235" font-size="20" text-anchor="middle" fill="#fff">博</text>
+        <text x="405" y="280" font-size="13" text-anchor="middle" fill="#2d2a26" font-weight="bold">屋里厢博物馆</text>
+        <text x="405" y="296" font-size="11" text-anchor="middle" fill="#9a9288">248弄 · 1930s人家</text>
+        <rect x="540" y="200" width="70" height="55" rx="6" fill="#b08bc9" opacity=".92"/>
+        <text x="575" y="235" font-size="20" text-anchor="middle" fill="#fff">琉</text>
+        <text x="575" y="280" font-size="13" text-anchor="middle" fill="#2d2a26" font-weight="bold">琉璃艺术博物馆</text>
+        <text x="575" y="296" font-size="11" text-anchor="middle" fill="#9a9288">泰康路 · 4800片琉璃砖</text>
+      </g>
+      <g transform="translate(712,40)">
+        <circle r="16" fill="#fff" stroke="#c2542e" stroke-width="2"/>
+        <text y="5" font-size="14" text-anchor="middle" fill="#c2542e" font-weight="bold">N</text>
+        <path d="M0,-13 L4,0 L0,-3 L-4,0 Z" fill="#c2542e"/>
+      </g>
+    </svg>
+    <div class="map-note">🗺 建筑打卡点位示意 · 实际位置以现场为准</div>
+  </div>
+</section>
+
+<!-- ═══ ② 画家楼彩蛋 ═══ -->
+<section id="painter">
+  <h2>② 本轮最大彩蛋 · 画家楼回来了</h2>
+  <p class="lead">官方消息：已于 2025 年 10 月竣工——你们去的时候正好赶上焕新开放！</p>
+  <div class="tipbox" style="border-left-color:var(--terra);background:#fdeeec;color:#8c3a2b">
+    🎉 <b>划重点：</b>泰康路 210 弄 5 号「画家楼」修缮工程已竣工开放。这里曾是陈逸飞时代画家聚集最多的一栋楼，如今转型为田子坊的<b>「会客厅」</b>——一楼是落地窗艺术展厅，二至四楼是演艺、快闪、文创活动空间，三层还藏着一个演艺大厅。
+  </div>
+  <div class="grid">
+    <div class="card">
+      <span class="icon">🏭</span>
+      <h3>前半生 · 弄堂工厂</h3>
+      <span class="tag">1935 年 · 康福织造厂</span>
+      <p>画家楼最早是 1935 年的康福织造厂，新中国时期成为上海钟表配件厂——和 210 弄其他工厂一样，是「上海民族工业摇篮」的活标本。</p>
+      <div class="see"><b>看什么：</b>保留的轻工业风格水泥外墙，快 90 年的历史痕迹。</div>
+    </div>
+    <div class="card">
+      <span class="icon">🎨</span>
+      <h3>后半生 · 画家楼</h3>
+      <span class="tag">1998 年 · 艺术家聚集地</span>
+      <p>陈逸飞等人入驻后，5 号楼成为画家最多的一栋，得名「画家楼」。楼上楼下的工作室、艺术沙龙，是田子坊艺术黄金时代的中心。</p>
+      <div class="see"><b>看什么：</b>门口的《上海少女》青铜雕塑（陈逸飞作品）。</div>
+    </div>
+    <div class="card">
+      <span class="icon">✨</span>
+      <h3>今生 · 田子坊会客厅</h3>
+      <span class="tag">2025 年 10 月竣工</span>
+      <p>修缮保留老水泥外墙，大胆加入玻璃与金属新材料——首层外墙做成巨型「艺术展框」：老墙是背景，新艺术品放在里面，过去与现在同框展示。</p>
+      <div class="see"><b>看什么：</b>一楼落地窗展厅（免费看）+ 新旧材料碰撞的立面细节。入选上海城市更新优质项目。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ③ 六类必看建筑 ═══ -->
+<section id="six">
+  <h2>③ 六类必看建筑</h2>
+  <p class="lead">每张卡片末尾的「看什么」是现场对照锚点</p>
+  <div class="grid">
+    <div class="card" id="zhicheng">
+      <span class="icon">🚪</span>
+      <h3>志成坊门楼</h3>
+      <span class="tag">1930 年 · 田子坊原名</span>
+      <p>泰康路 210 弄入口的老牌楼，「志成坊」三字历经 90 余年依然矗立。走进这道门，等于跨入田子坊的历史原点。</p>
+      <div class="see"><b>看什么：</b>门楼下仰拍，牌坊 + 红灯笼同框；摸一摸石门框上的岁月包浆。</div>
+    </div>
+    <div class="card" id="shikumen-group">
+      <span class="icon">🧱</span>
+      <h3>石库门里弄群</h3>
+      <span class="tag">上海民居的活化石</span>
+      <p>石头门框 + 黑漆大门 + 门楣雕花，内部是天井、客堂、厢房的传统布局。田子坊保留了 20 余种石库门形态，被称为「活着的建筑博物馆」。</p>
+      <div class="see"><b>看什么：</b>门楣上的西式山花/三角形/半圆形门罩 vs 中式砖木结构的混搭（详见下方速成课）。</div>
+    </div>
+    <div class="card" id="guojie">
+      <span class="icon">🌉</span>
+      <h3>过街楼</h3>
+      <span class="tag">老上海弄堂特殊风景</span>
+      <p>横跨在弄堂上方、里面住人、底下通行的小楼。一条弄里多条支弄，过街楼下人来人往，自成热闹小世界。</p>
+      <div class="see"><b>看什么：</b>抬头看「楼上晾衣杆 + 窗台花草 + 底下人流」的三层叠景——这是田子坊最市井的画面。</div>
+    </div>
+    <div class="card" id="gongchang">
+      <span class="icon">🏭</span>
+      <h3>弄堂工厂遗址</h3>
+      <span class="tag">上海民族工业摇篮</span>
+      <p>食品机械、织造、钟表配件等数十家工厂曾挤满 210 弄，延续到 80 年代。如今厂房里的老吊车、铁楼梯、透光天棚被保留下来。</p>
+      <div class="see"><b>看什么：</b>尔冬强工作室里的两台老吊车居然还能启动；天棚的进口透光板是当年工业革命的成果。</div>
+    </div>
+    <div class="card" id="tiancheng">
+      <span class="icon">🏠</span>
+      <h3>天成里（248 弄）</h3>
+      <span class="tag">1930 年 · 12 幢联排石库门</span>
+      <p>田子坊保存最完整的石库门里弄之一，红砖和水泥拉毛工艺仍是当年原貌，部分民居仍有原住民。</p>
+      <div class="see"><b>看什么：</b>彩色玻璃巷的支巷（最出片）+「里」字命名的门头规格（详见下方命名密码）。</div>
+    </div>
+    <div class="card" id="liuli">
+      <span class="icon">💎</span>
+      <h3>上海琉璃艺术博物馆</h3>
+      <span class="tag">田子坊旁 · 现代代表作</span>
+      <p>台湾艺术家张毅、杨惠姍创办，外墙镶嵌 4800 多片透明琉璃砖 + 巨型金色牡丹，夜晚灯光下极富视觉冲击。</p>
+      <div class="see"><b>看什么：</b>与老石库门一街之隔的「新老对话」；傍晚亮灯后是最佳拍摄时机，免费外观。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ④ 石库门速成课 ═══ -->
+<section id="shikumen">
+  <h2>④ 石库门速成课 · 5 分钟看懂</h2>
+  <p class="lead">为什么叫石库门？老式和新式怎么区分？</p>
+  <div class="map-card">
+    <svg viewBox="0 0 760 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="石库门单元结构">
+      <rect x="60" y="30" width="640" height="150" rx="4" fill="#f5ede2" stroke="#c9a97a" stroke-width="2"/>
+      <!-- 门框 -->
+      <rect x="330" y="100" width="100" height="80" fill="#2d2a26"/>
+      <rect x="322" y="92" width="116" height="10" fill="#8a8378"/>
+      <rect x="318" y="82" width="124" height="10" fill="#c2542e"/>
+      <!-- 门楣装饰 -->
+      <text x="380" y="76" font-size="13" text-anchor="middle" fill="#5c564d">▲ 门楣装饰（西式三角/半圆山花常见）</text>
+      <text x="380" y="130" font-size="12" text-anchor="middle" fill="#faf6f0">黑漆大门</text>
+      <text x="380" y="148" font-size="11" text-anchor="middle" fill="#c9a97a">石料门框</text>
+      <!-- 天井 -->
+      <rect x="150" y="110" width="140" height="70" fill="#efe0cd" stroke="#c9a97a"/>
+      <text x="220" y="150" font-size="13" text-anchor="middle" fill="#8a5a3b">天井 · 采光通风</text>
+      <!-- 客堂 -->
+      <rect x="470" y="110" width="100" height="70" fill="#efe0cd" stroke="#c9a97a"/>
+      <text x="520" y="150" font-size="13" text-anchor="middle" fill="#8a5a3b">客堂间</text>
+      <!-- 厢房 -->
+      <rect x="590" y="110" width="80" height="70" fill="#efe0cd" stroke="#c9a97a"/>
+      <text x="630" y="150" font-size="13" text-anchor="middle" fill="#8a5a3b">厢房</text>
+      <!-- 二层 -->
+      <line x1="60" y1="90" x2="700" y2="90" stroke="#c9a97a" stroke-width="2"/>
+      <text x="220" y="65" font-size="12" text-anchor="middle" fill="#8a5a3b">二楼住人 · 常见晾衣杆</text>
+      <text x="520" y="65" font-size="12" text-anchor="middle" fill="#8a5a3b">亭子间 / 晒台</text>
+    </svg>
+    <div class="map-note">🏛 典型石库门单元结构示意：门面 → 天井 → 客堂 → 厢房 → 楼上住家</div>
+  </div>
+  <div class="tipbox">
+    📖 <b>为什么叫「石库门」？</b>最流行的说法：门的外框以石料「箍」住，宁波话把「箍」读作「库」，故称「石库门」。它诞生于 1870 年前后的上海租界——太平天国战乱让江浙富商涌入租界定居，地贵地皮上造不起传统大宅院，于是江南民居的天井布局 × 欧洲联排式布局合体，诞生了这种中西合璧的独特民居。2011 年，石库门里弄建筑营造技艺入选国家级非物质文化遗产名录。
+  </div>
+  <table class="cmp">
+    <tr>
+      <th>特征</th>
+      <th>老式石库门（1870s–1910s）</th>
+      <th>新式石库门（1919 后）</th>
+    </tr>
+    <tr>
+      <td>开间</td>
+      <td>三开间、五开间，俗称「三上三下」</td>
+      <td>单开间、双开间，适合小家庭</td>
+    </tr>
+    <tr>
+      <td>结构</td>
+      <td>立帖式木构架，传统砖木</td>
+      <td>砖墙承重，局部钢筋混凝土</td>
+    </tr>
+    <tr>
+      <td>门楣</td>
+      <td>中式仪门、砖雕青瓦压顶、马头墙</td>
+      <td>西式三角形、半圆形山花，线条简化</td>
+    </tr>
+    <tr>
+      <td>标志空间</td>
+      <td>前天后天井、客堂、两厢</td>
+      <td>新增<b>亭子间</b>（屋顶小卧室，文学青年的圣地）</td>
+    </tr>
+    <tr>
+      <td>弄堂</td>
+      <td>窄，约 3 米，高墙封闭感强</td>
+      <td>放宽到 4 米以上，采光通风改善</td>
+    </tr>
+    <tr>
+      <td>田子坊对应</td>
+      <td>志成坊早期单元</td>
+      <td>天成里（248 弄）联排</td>
+    </tr>
+  </table>
+  <div class="tipbox">
+    🎬 <b>延伸彩蛋：</b>「亭子间」是新式石库门的标志——屋顶下的朝北小房间，冬冷夏热、租金便宜，却成了无数落魄作家、文艺青年的栖身之所。鲁迅、梁实秋笔下都写过它；上海文学里的「亭子间文人」一词由此而来。逛弄堂时抬头看到的小北窗，多半就是它。
+  </div>
+</section>
+
+<!-- ═══ ⑤ 邨坊里弄命名密码 ═══ -->
+<section id="naming">
+  <h2>⑤ 邨坊里弄命名密码 · 冷知识</h2>
+  <p class="lead">读懂名字，就能猜出这片房子当年的档次</p>
+  <div class="tipbox tea">
+    🔑 <b>核心口诀：弄 &lt; 里 &lt; 坊 &lt; 邨 &lt; 公寓 &lt; 别墅</b>——上海里弄命名等级森严，越往后越高级，是当年房地产商写在门口的「房价暗示」。
+  </div>
+  <table class="cmp">
+    <tr><th>后缀</th><th>含义与档次</th><th>田子坊对应</th></tr>
+    <tr>
+      <td>弄</td>
+      <td>最基础的小巷单元，普遍老式石库门</td>
+      <td>各主弄堂的支弄</td>
+    </tr>
+    <tr>
+      <td>里</td>
+      <td>Lane，早期里弄常用名，老式石库门为主</td>
+      <td><b>天成里</b>（248 弄）——联排石库门，中档</td>
+    </tr>
+    <tr>
+      <td>坊</td>
+      <td>Terrace，多为新式里弄，质量比「里」好一档</td>
+      <td><b>志成坊</b>（210 弄）、<b>平原坊</b>（274 弄）</td>
+    </tr>
+    <tr>
+      <td>邨 / 村</td>
+      <td>新式里弄高级形态，钢窗打蜡地板、卫生设备齐全</td>
+      <td>附近嘉善路的「甘邨」等</td>
+    </tr>
+    <tr>
+      <td>别墅 / 花园</td>
+      <td>顶级花园式里弄，接近独幢洋房，常带汽车间</td>
+      <td>建国中路一带的新式里弄（建国坊方向）</td>
+    </tr>
+  </table>
+  <div class="tipbox">
+    🧠 <b>现场应用：</b>「天成里」用「里」，说明它当年定位是普通中产联排住宅；「志成坊」「平原坊」用「坊」，档次略高一筹；建国中路 155 弄「建国坊」属于街区北端的新式里弄带——住的人当年更体面。看到弄堂名，默默在心里给它标个价，逛起来更有味道。
+  </div>
+</section>
+
+<!-- ═══ ⑥ 打卡清单（已修复死链） ═══ -->
+<section id="checklist">
+  <h2>⑥ 现场打卡清单</h2>
+  <p class="lead">点击可跳到对应介绍，到现场按图索骥</p>
+  <div class="toc">
+    <a href="#zhicheng">🚪 志成坊门楼下仰拍</a>
+    <a href="#painter">🎨 画家楼 · 焕新首访</a>
+    <a href="#guojie">🌉 过街楼下人景三层</a>
+    <a href="#tiancheng">🧱 天成里红砖墙 + 彩色玻璃巷</a>
+    <a href="#gongchang">🏭 老厂房吊车 + 铁楼梯</a>
+    <a href="#liuli">💎 琉璃博物馆外墙夜景</a>
+  </div>
+  <div class="tipbox red">
+    ⚠ <b>温馨提示：</b>楼上住着真实居民，拍照请勿用闪光灯对着人家窗户，别大声喧哗；弄堂窄处仅容两人并行，高峰期注意礼让；挂着「谢绝参观」的门洞不要闯入。
+  </div>
+</section>
+
+<div class="page-nav">
+  <a href="index.html">🏠 攻略首页</a>
+  <a href="food.html">🍜 觅食指南</a>
+  <a href="history.html">📜 发展历史</a>
+</div>
+
+</div>
+
+<footer>田子坊 Citywalk · 出发前的功课 <span class="heart">♥</span> 建筑篇</footer>
+
+</body>
+</html>

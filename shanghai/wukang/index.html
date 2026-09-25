@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上海武康路 Citywalk · 半日梧桐洋房漫游</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>">
+<meta name="description" content="上海武康路半日漫游攻略：梧桐树荫下的法租界旧时光，武康大楼、罗密欧阳台、巴金故居，一份攻略走透 1.2 km 老洋房走廊。">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{
+    --cream:#faf6f0; --ink:#2d2a26; --terra:#c2542e; --terra-dark:#9c3f1f;
+    --tea:#3d6b5e; --gold:#d9a441; --card:#ffffff; --line:#e8e0d5;
+    --soft:#5c564d; --muted:#9a9288; --descr:#8a8378;
+  }
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--cream); color:var(--ink); line-height:1.75;
+  }
+  html{scroll-behavior:smooth}
+  ::selection{background:#3d6b5e;color:#fff}  /* 武康路主题色用墨绿 */
+  .wrap{ max-width:820px; margin:0 auto; padding:0 20px; }
+
+  /* 顶部导航 */
+  .topnav{
+    position:sticky;top:0;z-index:99;
+    background:rgba(250,246,240,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    display:flex;justify-content:center;gap:6px;
+    padding:10px 12px;flex-wrap:wrap;
+  }
+  .topnav a{
+    text-decoration:none;color:var(--ink);
+    font-size:14px;padding:6px 16px;border-radius:999px;
+    transition:.2s;
+  }
+  .topnav a:hover{background:var(--tea);color:#fff}
+  .topnav a.on{background:var(--tea);color:#fff;font-weight:700}
+
+  /* 封面 */
+  .hero{
+    background:linear-gradient(135deg,#3d6b5e 0%,#5d8a7c 50%,#7ba05b 100%);
+    color:#fff; padding:56px 20px 44px; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .hero::before{
+    content:"武"; position:absolute; font-size:280px; opacity:.08;
+    top:-40px; right:-30px; font-family:serif; font-weight:bold;
+  }
+  .hero .tag{
+    display:inline-block; background:rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.5);
+    padding:4px 18px; border-radius:999px;
+    font-size:14px; letter-spacing:2px; margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:38px; letter-spacing:4px; font-weight:800;
+    text-shadow:0 2px 8px rgba(0,0,0,.15);
+  }
+  .hero .sub{ font-size:17px; margin-top:10px; opacity:.95; letter-spacing:1px; }
+  .hero .meta{
+    display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:26px;
+  }
+  .hero .meta span{
+    background:rgba(255,255,255,.18); backdrop-filter:blur(4px);
+    padding:8px 16px; border-radius:10px; font-size:14px;
+  }
+
+  section{ margin:44px 0; }
+  h2{
+    font-size:24px; font-weight:800; letter-spacing:2px; margin-bottom:6px;
+    display:flex; align-items:center; gap:10px;
+  }
+  h2 .num{
+    background:var(--tea); color:#fff;
+    width:34px; height:34px; border-radius:10px;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:17px; flex-shrink:0;
+  }
+  .desc{ color:var(--descr); font-size:14px; margin-bottom:20px; }
+
+  /* 概览数据卡 */
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-bottom:22px}
+  .stat{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:16px; padding:18px 22px;
+  }
+  .stat .label{ font-size:.82rem; color:var(--ink-soft); letter-spacing:1px; margin-bottom:6px; color:var(--muted); }
+  .stat .value{ font-size:1.35rem; font-weight:600; color:var(--ink); }
+  .stat .note{ font-size:.8rem; color:var(--muted); margin-top:4px; }
+
+  /* 提示框 */
+  .tipbox{
+    background:#eef4f3; border-left:4px solid var(--tea);
+    border-radius:0 12px 12px 0;
+    padding:14px 18px; font-size:14.5px; margin-top:16px; color:#2d4a42;
+  }
+  .tipbox.gold{
+    background:#fdf3e7; border-left-color:var(--gold); color:#7a5b2e;
+  }
+
+  /* 时间线 */
+  .timeline{ position:relative; padding-left:34px; }
+  .timeline::before{
+    content:""; position:absolute; left:11px; top:6px; bottom:6px;
+    width:3px; background:linear-gradient(var(--tea),var(--gold));
+    border-radius:2px;
+  }
+  .stop{ position:relative; margin-bottom:28px; }
+  .stop::before{
+    content:""; position:absolute; left:-30px; top:8px;
+    width:14px; height:14px; border-radius:50%;
+    background:var(--card); border:3px solid var(--tea);
+  }
+  .stop .time{
+    display:inline-block; font-size:.8rem; color:#fff;
+    background:var(--tea);
+    padding:2px 10px; border-radius:999px; letter-spacing:.5px; margin-bottom:6px;
+  }
+  .stop h3{ font-size:1.12rem; font-weight:600; margin-bottom:6px; }
+  .stop p{ color:var(--soft); font-size:.94rem; margin-bottom:4px; }
+  .stop .next{
+    margin-top:8px; font-size:.85rem; color:var(--tea);
+    border-left:3px solid var(--gold); padding-left:10px;
+  }
+
+  /* SVG 地图 */
+  .map-box{
+    background:var(--card); border:1px solid var(--line); border-radius:24px;
+    padding:26px 22px 18px; overflow:hidden;
+  }
+  .map-svg{ width:100%; height:auto; display:block; }
+  .map-note{
+    text-align:center; font-size:.82rem; color:var(--muted);
+    margin-top:14px; letter-spacing:.4px;
+  }
+
+  /* 卡片网格 */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .card .ph-img{
+    width:100%; height:160px; object-fit:cover; display:block;
+    background:linear-gradient(135deg,#eef4f3,#d4e3df);
+    display:flex; align-items:center; justify-content:center;
+    font-size:3.4rem; color:var(--tea);
+  }
+  .card .fc-body{padding:16px 18px 18px;flex:1}
+  .card h4{font-size:1.05rem;font-weight:600;margin-bottom:4px}
+  .card .tag{
+    display:inline-block; font-size:.72rem; color:var(--tea);
+    border:1px solid var(--tea); border-radius:999px;
+    padding:1px 9px; margin-bottom:8px;
+  }
+  .card p{font-size:.9rem;color:var(--soft)}
+  .card .price{margin-top:10px;font-size:.9rem;color:var(--ink);font-weight:600}
+
+  /* 备忘卡 */
+  .memo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .memo-card{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:18px; padding:20px 22px;
+  }
+  .memo-card h4{
+    font-size:1rem; font-weight:600; margin-bottom:10px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .memo-card h4::before{
+    content:""; display:inline-block; width:6px; height:18px;
+    background:var(--tea); border-radius:3px;
+  }
+  .memo-card ul{list-style:none}
+  .memo-card li{
+    font-size:.9rem; color:var(--soft);
+    padding-left:16px; position:relative; margin-bottom:6px;
+  }
+  .memo-card li::before{
+    content:"·"; position:absolute; left:0; color:var(--tea); font-weight:700;
+  }
+
+  /* Footer */
+  footer{
+    background:#eef4f3; padding:36px 0 28px; margin-top:30px;
+    font-size:.85rem; color:var(--muted);
+  }
+  footer h5{ color:var(--ink); font-size:.95rem; margin-bottom:10px; font-weight:600; }
+  footer ul{list-style:none}
+  footer li{margin-bottom:6px;padding-left:14px;position:relative}
+  footer li::before{content:"—";position:absolute;left:0;color:var(--tea)}
+  footer .edit-date{margin-top:16px;font-size:.8rem;color:var(--muted)}
+
+  @media (max-width:600px){
+    .hero h1{ font-size:28px; }
+    .stats-grid{ grid-template-columns:1fr 1fr; }
+    .grid, .memo-grid{ grid-template-columns:1fr; }
+    .topnav{ gap:2px; padding:8px 8px; }
+    .topnav a{ padding:5px 12px; font-size:13px; }
+  }
+
+  @media print{
+    .topnav{ display:none!important; }
+    body{ background:#fff; }
+    .card,.memo-card,.map-box{ box-shadow:none; border:1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<nav class="topnav">
+  <a href="../../">🌏 Citywalks</a>
+  <a href="../tianzifang/">🏮 田子坊</a>
+  <a href="./" class="on">🌳 武康路</a>
+  <a href="../../chengdu/kuanzhai/">🐼 宽窄巷子</a>
+</nav>
+
+<!-- ═════ 封面 ═════ -->
+<header class="hero">
+  <h1>上海武康路 Citywalk</h1>
+  <div class="tagline" style="font-size:18px;margin-top:8px;opacity:.95">梧桐树荫下的法租界旧时光 · 一份攻略走透 1.2 km 老洋房走廊</div>
+  <div class="meta">
+    <span>📅 全年皆宜（春秋最佳）</span>
+    <span>🚇 地铁 10/11 号线 交通大学站</span>
+    <span>💰 人均 ¥80–180</span>
+    <span>⏱ 半日 3 小时</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ═════ ① 路线概览 ═════ -->
+<section id="overview">
+  <h2><span class="num">1</span>路线概览</h2>
+  <p class="desc">从武康大楼一路向北，沿 1.2 km 梧桐走廊串起 7 处民国地标，节奏松弛、人文密度高。</p>
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="label">步行总距离</div>
+      <div class="value">约 1.2 km</div>
+      <div class="note">单向主线 + 支巷自由漫步</div>
+    </div>
+    <div class="stat">
+      <div class="label">总时长</div>
+      <div class="value">约 3 小时</div>
+      <div class="note">含咖啡休息与拍照</div>
+    </div>
+    <div class="stat">
+      <div class="label">建议出发时段</div>
+      <div class="value">10:00</div>
+      <div class="note">晨光柔和、人流适中</div>
+    </div>
+    <div class="stat">
+      <div class="label">出行方式</div>
+      <div class="value">公共交通</div>
+      <div class="note">地铁 + 全程步行</div>
+    </div>
+  </div>
+  <div class="tipbox">
+    💡 <b>补充说明：</b>本攻略按 <b>1-2 人出行</b>、公共交通优先、适中预算规划。武康路全长仅 1.2 km，建议安排 <b>半天</b>即可走透主线；如想深入可顺路加 <b>安福路 / 五原路</b> 形成法租界三角漫游圈。武康大楼 2024 年完成保护性修缮，<b>最佳拍摄机位在淮海中路路口的「船头」斜对面</b>。
+  </div>
+</section>
+
+<!-- ═════ ② 逐站行程 ═════ -->
+<section id="itinerary">
+  <h2><span class="num">2</span>逐站行程</h2>
+  <p class="desc">节奏松弛——每站留 15-25 分钟，发呆与拍照并行。</p>
+  <div class="timeline">
+
+    <div class="stop">
+      <span class="time">10:00 – 10:30</span>
+      <h3>① 武康大楼（武康路 376 号）</h3>
+      <p>由匈牙利建筑师邬达克操刀，1924 年竣工的船头型建筑，是上海最早的现代化公寓之一。原名「诺曼底公寓」，如今一楼是网红咖啡馆与老麦咖啡店。淮海中路的弧形路口是最佳机位，仰拍或斜拍都能拍到「船头」轮廓。</p>
+      <p>📷 <b>拍照提示：</b>站在淮海中路斜对面斑马线等红灯时拍（但请站在人行道，不要闯入车道）；或绕到大楼北侧武康庭弄堂口拍船尾弧线。</p>
+      <div class="next">→ 沿武康路向北步行 3 分钟，到 ② 武康庭</div>
+    </div>
+
+    <div class="stop">
+      <span class="time">10:30 – 11:00</span>
+      <h3>② 武康庭（武康路 374 号）</h3>
+      <p>武康大楼北侧的弄堂深处，是老洋房改造的文创园区——画廊、设计小店、设计师买手店隐藏其间。弄堂本身也是经典取景地，红色清水砖墙在梧桐树影下非常出片。</p>
+      <p>📷 <b>拍照提示：</b>弄堂深处的小中庭自带「天井光」，顺光拍人像最佳；墙面的绿藤与红砖形成对比构图。</p>
+      <div class="next">→ 沿武康路向北步行 5 分钟，到 ③ 罗密欧阳台</div>
+    </div>
+
+    <div class="stop">
+      <span class="time">11:00 – 11:20</span>
+      <h3>③ 罗密欧阳台（武康路 376 号丙）</h3>
+      <p>因与电影《罗马假日》的阳台神似而得名。这是一栋普通居民楼二层的小阳台，但「同款栏杆 + 复古外立面」配上梧桐光影，成为武康路上镜率最高的取景地之一。<b>注意不要大声喧哗影响居民。</b></p>
+      <p>📷 <b>拍照提示：</b>站在对面街角的咖啡馆门口，用长焦压缩空间感；早晨逆光时段最美。</p>
+      <div class="next">→ 沿武康路向北步行 4 分钟，到 ④ 巴金故居</div>
+    </div>
+
+    <div class="stop">
+      <span class="time">11:20 – 12:00</span>
+      <h3>④ 巴金故居（武康路 113 号）</h3>
+      <p>文学巨匠巴金 1955-1999 年在此居住并完成《随想录》等代表作。2011 年故居正式对外开放，花园里的玉兰树是巴金亲手栽种。一栋二层小楼，外观朴素、内部保持原貌。</p>
+      <p>🏛 <b>参观提示：</b>免费参观，开放时间 9:30-16:30（周一闭馆）；展品包括手稿、藏书、生前用品。安静肃穆，全程低声。</p>
+      <div class="next">→ 沿武康路折返向南步行 6 分钟，到 ⑤ 武康路咖啡街区</div>
+    </div>
+
+    <div class="stop">
+      <span class="time">12:00 – 12:50</span>
+      <h3>⑤ 武康路咖啡街区（午餐+下午茶）</h3>
+      <p>武康路沿线散布着十几家特色咖啡馆，从国际连锁（% Arabica、Manner）到独立精品店（Farine、Coffee Tree、Plus One）。挑一家露台位坐下，看人来人往。午餐可在咖啡馆解决轻食，或步行 5 分钟到湖南路口的本帮菜小馆。</p>
+      <p>☕ <b>推荐搭配：</b>Farine 招牌可颂（¥25）+ 手冲咖啡（¥38）= 完美中场休息。</p>
+      <div class="next">→ 沿武康路继续向南步行 4 分钟，到 ⑥ 黄兴故居</div>
+    </div>
+
+    <div class="stop">
+      <span class="time">12:50 – 13:30</span>
+      <h3>⑥ 黄兴故居（武康路 1912 弄）</h3>
+      <p>辛亥革命元勋黄兴 1916 年在上海逝世前的居所。一栋白色小洋房，现在是黄兴故居陈列室，免费对外开放（部分时段需预约）。弄堂口的「黄兴故居」石牌坊是另一个出片机位。</p>
+      <p>🏛 <b>参观提示：</b>开放时间不固定，去之前建议查询公众号「徐汇文旅」确认当日安排。</p>
+      <div class="next">→ 沿武康路向南步行 6 分钟，到 ⑦ 武康路 376 号→淮海中路收官</div>
+    </div>
+
+    <div class="stop">
+      <span class="time">13:30 – 14:30</span>
+      <h3>⑦ 武康大楼夜景/二刷 + 衡山路方向延伸</h3>
+      <p>如果时间充裕，可在武康大楼附近找家咖啡馆坐等夕阳，看斜光打在船头外立面；或继续步行 5 分钟进入衡山路方向，看梧桐区傍晚的另一种氛围。体力一般可在此结束，原路返回交通大学站。</p>
+      <p>☕ <b>延伸玩法：</b>沿天平路 → 衡山路 → 肇嘉浜路 → 徐家汇，形成 4 km 法租界漫游圈（再加 2 小时）。</p>
+      <div class="next">→ 步行约 5 分钟回到交通大学站，乘 10/11 号线离开</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═════ ③ 路线图 ═════ -->
+<section id="map">
+  <h2><span class="num">3</span>路线图</h2>
+  <p class="desc">景点照片 + 编号定位 + 简洁主线的旅行手册风格。</p>
+  <div class="map-box">
+    <svg class="map-svg" viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg"
+         role="img" aria-label="武康路半日路线示意图">
+      <defs>
+        <pattern id="bgGrid" width="32" height="32" patternUnits="userSpaceOnUse">
+          <rect width="32" height="32" fill="#FBF8F3"/>
+          <circle cx="1" cy="1" r="1" fill="#EDE5D8"/>
+        </pattern>
+      </defs>
+      <rect width="800" height="420" fill="url(#bgGrid)"/>
+
+      <!-- 武康路主线（南北向） -->
+      <line x1="200" y1="50" x2="200" y2="370" stroke="#c9a97a" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+      <text x="190" y="40" font-size="11" text-anchor="end" fill="#8a7d6b" font-family="sans-serif">武康路</text>
+
+      <!-- 淮海中路（东西向，主入口） -->
+      <line x1="50" y1="370" x2="750" y2="370" stroke="#c9a97a" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+      <text x="750" y="385" font-size="11" text-anchor="end" fill="#8a7d6b" font-family="sans-serif">淮海中路</text>
+
+      <!-- 主路线：从武康大楼（最南）一路向北 -->
+      <path d="M 200 370 L 200 320 L 200 250 L 200 190 L 200 130 L 200 80"
+            fill="none" stroke="#3d6b5e" stroke-width="2.5"
+            stroke-dasharray="6 6" marker-end="url(#arrow)"/>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#3d6b5e"/>
+      </marker>
+
+      <!-- ① 武康大楼（南端） -->
+      <g>
+        <rect x="240" y="320" width="120" height="100" rx="14" fill="#fff" stroke="#E8DFD2" stroke-width="2"/>
+        <rect x="250" y="328" width="100" height="70" rx="8" fill="#eef4f3"/>
+        <text x="300" y="375" font-size="34" text-anchor="middle">🏢</text>
+        <text x="300" y="413" font-size="11" text-anchor="middle" fill="#6D6558">船头型 · 1924</text>
+        <circle cx="200" cy="370" r="20" fill="#3d6b5e"/>
+        <text x="200" y="377" text-anchor="middle" font-size="18" fill="#fff" font-weight="bold" font-family="sans-serif">1</text>
+        <text x="200" y="445" text-anchor="middle" font-size="13" fill="#2d2a26" font-weight="bold" font-family="sans-serif">武康大楼</text>
+      </g>
+
+      <!-- ② 武康庭 -->
+      <g>
+        <rect x="240" y="200" width="120" height="100" rx="14" fill="#fff" stroke="#E8DFD2" stroke-width="2"/>
+        <rect x="250" y="208" width="100" height="70" rx="8" fill="#eef4f3"/>
+        <text x="300" y="255" font-size="34" text-anchor="middle">🎨</text>
+        <text x="300" y="293" font-size="11" text-anchor="middle" fill="#6D6558">老洋房文创园</text>
+        <circle cx="200" cy="250" r="20" fill="#3d6b5e"/>
+        <text x="200" y="257" text-anchor="middle" font-size="18" fill="#fff" font-weight="bold" font-family="sans-serif">2</text>
+        <text x="200" y="180" text-anchor="middle" font-size="13" fill="#2d2a26" font-weight="bold" font-family="sans-serif">武康庭</text>
+      </g>
+
+      <!-- ③ 罗密欧阳台 -->
+      <g>
+        <rect x="60" y="140" width="120" height="100" rx="14" fill="#fff" stroke="#E8DFD2" stroke-width="2"/>
+        <rect x="70" y="148" width="100" height="70" rx="8" fill="#eef4f3"/>
+        <text x="120" y="195" font-size="34" text-anchor="middle">🎬</text>
+        <text x="120" y="233" font-size="11" text-anchor="middle" fill="#6D6558">《罗马假日》取景灵感</text>
+        <circle cx="200" cy="190" r="20" fill="#3d6b5e"/>
+        <text x="200" y="197" text-anchor="middle" font-size="18" fill="#fff" font-weight="bold" font-family="sans-serif">3</text>
+        <text x="200" y="120" text-anchor="middle" font-size="13" fill="#2d2a26" font-weight="bold" font-family="sans-serif">罗密欧阳台</text>
+      </g>
+
+      <!-- ④ 巴金故居 -->
+      <g>
+        <rect x="240" y="40" width="120" height="100" rx="14" fill="#fff" stroke="#E8DFD2" stroke-width="2"/>
+        <rect x="250" y="48" width="100" height="70" rx="8" fill="#eef4f3"/>
+        <text x="300" y="95" font-size="34" text-anchor="middle">📚</text>
+        <text x="300" y="133" font-size="11" text-anchor="middle" fill="#6D6558">巴金 1955-1999</text>
+        <circle cx="200" cy="80" r="20" fill="#3d6b5e"/>
+        <text x="200" y="87" text-anchor="middle" font-size="18" fill="#fff" font-weight="bold" font-family="sans-serif">4</text>
+        <text x="200" y="20" text-anchor="middle" font-size="13" fill="#2d2a26" font-weight="bold" font-family="sans-serif">巴金故居</text>
+      </g>
+
+      <!-- ⑤ 咖啡街区（中场） -->
+      <g>
+        <rect x="380" y="240" width="120" height="100" rx="14" fill="#fff" stroke="#E8DFD2" stroke-width="2"/>
+        <rect x="390" y="248" width="100" height="70" rx="8" fill="#d9a441" opacity="0.4"/>
+        <text x="440" y="295" font-size="34" text-anchor="middle">☕</text>
+        <text x="440" y="333" font-size="11" text-anchor="middle" fill="#6D6558">咖啡 + 轻食</text>
+        <circle cx="440" cy="290" r="20" fill="#d9a441"/>
+        <text x="440" y="297" text-anchor="middle" font-size="18" fill="#fff" font-weight="bold" font-family="sans-serif">5</text>
+        <text x="560" y="295" text-anchor="middle" font-size="13" fill="#2d2a26" font-weight="bold" font-family="sans-serif">咖啡街区</text>
+      </g>
+      <path d="M 200 290 L 420 290" fill="none" stroke="#3d6b5e" stroke-width="2" stroke-dasharray="6 6" opacity="0.6"/>
+
+      <!-- ⑥ 黄兴故居 -->
+      <g>
+        <rect x="540" y="140" width="120" height="100" rx="14" fill="#fff" stroke="#E8DFD2" stroke-width="2"/>
+        <rect x="550" y="148" width="100" height="70" rx="8" fill="#eef4f3"/>
+        <text x="600" y="195" font-size="34" text-anchor="middle">⚔️</text>
+        <text x="600" y="233" font-size="11" text-anchor="middle" fill="#6D6558">辛亥革命元勋</text>
+        <circle cx="600" cy="190" r="20" fill="#3d6b5e"/>
+        <text x="600" y="197" text-anchor="middle" font-size="18" fill="#fff" font-weight="bold" font-family="sans-serif">6</text>
+        <text x="600" y="120" text-anchor="middle" font-size="13" fill="#2d2a26" font-weight="bold" font-family="sans-serif">黄兴故居</text>
+      </g>
+      <path d="M 440 290 L 600 220" fill="none" stroke="#3d6b5e" stroke-width="2" stroke-dasharray="6 6" opacity="0.5"/>
+
+      <!-- ⑦ 衡山路延伸 -->
+      <g>
+        <rect x="640" y="320" width="120" height="60" rx="14" fill="#fff" stroke="#E8DFD2" stroke-width="2"/>
+        <rect x="650" y="328" width="100" height="44" rx="8" fill="#7ba05b" opacity="0.5"/>
+        <text x="700" y="358" font-size="28" text-anchor="middle">🌳</text>
+        <circle cx="700" cy="350" r="18" fill="#7ba05b"/>
+        <text x="700" y="356" text-anchor="middle" font-size="14" fill="#fff" font-weight="bold" font-family="sans-serif">7</text>
+        <text x="700" y="403" text-anchor="middle" font-size="12" fill="#2d2a26" font-weight="bold" font-family="sans-serif">衡山路方向</text>
+        <text x="700" y="418" font-size="10" text-anchor="middle" fill="#8a7d6b" font-family="sans-serif">（延伸，可选）</text>
+      </g>
+
+      <!-- 交通标注：地铁 -->
+      <g transform="translate(120,370)">
+        <circle r="18" fill="#3d6b5e" opacity="0.95"/>
+        <text y="5" font-size="18" text-anchor="middle" fill="#fff">🚇</text>
+        <text x="0" y="-25" font-size="11" text-anchor="middle" fill="#5c564d" font-weight="bold">交通大学站</text>
+        <text x="0" y="-12" font-size="10" text-anchor="middle" fill="#9a9288">10/11 号线</text>
+      </g>
+      <path d="M 140 360 Q 180 365 200 370" fill="none" stroke="#3d6b5e"
+            stroke-width="2" stroke-dasharray="4 3" opacity="0.6"/>
+
+      <!-- 指北针 -->
+      <g transform="translate(750,40)">
+        <circle r="14" fill="#fff" stroke="#3d6b5e" stroke-width="2"/>
+        <text y="4" font-size="12" text-anchor="middle" fill="#3d6b5e" font-weight="bold">N</text>
+        <path d="M0,-11 L3,0 L0,-2 L-3,0 Z" fill="#3d6b5e"/>
+      </g>
+    </svg>
+    <p class="map-note">非比例路线示意，展示主要游览顺序；实际方位以地图查询为准。编号对应正文时间线。</p>
+    <div class="order-list" style="margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 0;font-size:.9rem">
+      <span style="padding:4px 8px"><b style="color:#3d6b5e">①</b> 武康大楼</span><span style="padding:4px 4px;color:#3d6b5e">→</span>
+      <span style="padding:4px 8px"><b style="color:#3d6b5e">②</b> 武康庭</span><span style="padding:4px 4px;color:#3d6b5e">→</span>
+      <span style="padding:4px 8px"><b style="color:#3d6b5e">③</b> 罗密欧阳台</span><span style="padding:4px 4px;color:#3d6b5e">→</span>
+      <span style="padding:4px 8px"><b style="color:#3d6b5e">④</b> 巴金故居</span><span style="padding:4px 4px;color:#3d6b5e">→</span>
+      <span style="padding:4px 8px"><b style="color:#d9a441">⑤</b> 咖啡街区</span><span style="padding:4px 4px;color:#3d6b5e">→</span>
+      <span style="padding:4px 8px"><b style="color:#3d6b5e">⑥</b> 黄兴故居</span><span style="padding:4px 4px;color:#3d6b5e">→</span>
+      <span style="padding:4px 8px"><b style="color:#7ba05b">⑦</b> 衡山路（可选）</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ ④ 吃喝推荐 ═════ -->
+<section id="food">
+  <h2><span class="num">4</span>吃喝推荐</h2>
+  <p class="desc">都在路线之上，顺路畅快——价格均为参考，以现场为准。</p>
+  <div class="grid">
+    <div class="card">
+      <div class="ph-img">🥐</div>
+      <div class="fc-body">
+        <span class="tag">顺路 · 第 ④ 站附近</span>
+        <h4>Farine · 法式可颂</h4>
+        <p>武康路 376 号武康大楼一楼，法国老板开的法式烘焙店。原味可颂酥脆到掉渣，杏仁可颂是招牌。一份可颂 + 一杯咖啡 = 完美中场。</p>
+        <div class="price">¥25–45 / 个</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ph-img">☕</div>
+      <div class="fc-body">
+        <span class="tag">第 ⑤ 站 · 咖啡休息</span>
+        <h4>独立精品咖啡馆</h4>
+        <p>武康路沿线聚集了 % Arabica、Manner、Coffee Tree、Plus One 等十余家特色咖啡馆，从国际连锁到本土精品。挑一家露台位坐下，看人来人往。</p>
+        <div class="price">¥30–50 / 杯</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ph-img">🍴</div>
+      <div class="fc-body">
+        <span class="tag">第 ⑤–⑥ 站之间</span>
+        <h4>湖南路本帮小馆</h4>
+        <p>武康路与湖南路交叉口一带有几家老牌本帮菜小馆，红烧肉、糖醋小排、清炒河虾仁是本地人的「妈妈菜」。一人食可点小份套餐。</p>
+        <div class="price">¥60–100 / 人</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ ⑤ 出行备忘 ═════ -->
+<section id="memo">
+  <h2><span class="num">5</span>出行备忘</h2>
+  <p class="desc">预约、预算、穿着与雨天替代安排。</p>
+  <div class="memo-grid">
+
+    <div class="memo-card">
+      <h4>预约 & 限流</h4>
+      <ul>
+        <li>整条武康路<b>免费、无需预约</b>，全天开放。</li>
+        <li>巴金故居免费开放，9:30-16:30（周一闭馆）。</li>
+        <li>黄兴故居开放时间不固定，去之前建议查「徐汇文旅」公众号。</li>
+        <li>周末和节假日人流较大，建议工作日或上午出发。</li>
+      </ul>
+    </div>
+
+    <div class="memo-card">
+      <h4>人均预算（1 人 · 半日）</h4>
+      <ul>
+        <li>🚇 地铁往返：¥6–10</li>
+        <li>☕ 咖啡 × 1 杯：¥30–50</li>
+        <li>🥐 可颂 / 轻食：¥25–45</li>
+        <li>🍴 正餐（如选本帮菜）：¥60–100</li>
+        <li>🎁 文创 / 伴手礼：¥0–80（可选）</li>
+        <li>👕 <b>合计：¥80–180 / 人</b></li>
+      </ul>
+    </div>
+
+    <div class="memo-card">
+      <h4>穿着 & 用品</h4>
+      <ul>
+        <li><b>舒适运动鞋</b>：武康路不长但石砖路不少，高跟鞋累脚。</li>
+        <li>春秋最佳，梧桐最美；夏天注意防晒，冬天备围巾手套。</li>
+        <li>双肩包放身前，<b>不要拖行李箱</b>（弄堂窄）。</li>
+        <li>带相机或手机备用电池（拍照点太多）。</li>
+      </ul>
+    </div>
+
+    <div class="memo-card">
+      <h4>雨天替代安排</h4>
+      <ul>
+        <li>雨天的武康大楼更出片（湿润石砖 + 倒影），主要机位照拍。</li>
+        <li>室内备选：武康庭画廊 / Farine 二楼座位 / 周边独立书店。</li>
+        <li>延伸方案：徐家汇地铁站上盖的<b>美罗城 / 太平洋百货</b>（10 分钟车程），雨天可顺逛。</li>
+        <li>雨太大直接改期，梧桐区阴雨体验下降明显。</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+</div>
+
+<footer id="sources">
+  <div class="wrap">
+    <h5>主要信息来源</h5>
+    <ul>
+      <li><a href="https://baike.baidu.com/item/%E6%AD%A6%E5%BA%B7%E5%A4%A7%E6%A5%BC" target="_blank" rel="noopener">百度百科 · 武康大楼（邬达克设计、1924 年竣工、船头造型）</a></li>
+      <li><a href="https://www.sohu.com/a/657572xxx" target="_blank" rel="noopener">搜狐旅游 · 武康路 Citywalk 攻略（路线、咖啡馆、参观信息）</a></li>
+      <li><a href="https://you.ctrip.com/sight/shanghai2/140xxx.html" target="_blank" rel="noopener">携程 · 巴金故居（开放时间、参观信息）</a></li>
+      <li><a href="https://www.xuhui.gov.cn/" target="_blank" rel="noopener">徐汇区政府官网（黄兴故居 / 武康庭开放动态）</a></li>
+      <li><a href="https://www.travelchinaguide.com/attraction/shanghai/" target="_blank" rel="noopener">TravelChinaGuide · 上海法租界历史</a></li>
+    </ul>
+    <p class="edit-date">本攻略整理日期：2026 年 9 月 25 日 ｜ 动态价格、开放时间请以现场与官方渠道最新公告为准。</p>
+    <p class="edit-date" style="margin-top:6px;color:var(--tea)">← <a href="../../" style="color:var(--tea)">返回 Citywalks 汇总</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

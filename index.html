@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Citywalks · 全国半日漫游攻略合集</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<meta name="description" content="全国 3 城 Citywalk 半日漫游攻略合集：上海田子坊、上海武康路、成都宽窄巷子。">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{
+    --cream:#faf6f0; --ink:#2d2a26; --terra:#c2542e; --terra-dark:#9c3f1f;
+    --tea:#3d6b5e; --gold:#d9a441; --card:#ffffff; --line:#e8e0d5;
+    --soft:#5c564d; --muted:#9a9288; --descr:#8a8378;
+  }
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--cream); color:var(--ink); line-height:1.75;
+  }
+  html{scroll-behavior:smooth}
+  ::selection{background:#c2542e;color:#fff}
+  .wrap{ max-width:880px; margin:0 auto; padding:0 20px; }
+
+  /* 封面 */
+  .hero{
+    background:linear-gradient(135deg,#c2542e 0%,#d9793f 45%,#d9a441 100%);
+    color:#fff; padding:64px 20px 48px; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .hero::before{
+    content:"城"; position:absolute; font-size:340px; opacity:.08;
+    top:-50px; right:-30px; font-family:serif; font-weight:bold;
+  }
+  .hero .tag{
+    display:inline-block; background:rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.5);
+    padding:4px 18px; border-radius:999px;
+    font-size:14px; letter-spacing:2px; margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:42px; letter-spacing:6px; font-weight:800;
+    text-shadow:0 2px 8px rgba(0,0,0,.15);
+  }
+  .hero .sub{ font-size:18px; margin-top:12px; opacity:.95; letter-spacing:1px; }
+  .hero .meta{
+    display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:26px;
+  }
+  .hero .meta span{
+    background:rgba(255,255,255,.18); backdrop-filter:blur(4px);
+    padding:8px 16px; border-radius:10px; font-size:14px;
+  }
+
+  section{ margin:50px 0; }
+  h2{
+    font-size:24px; font-weight:800; letter-spacing:2px; margin-bottom:6px;
+    display:flex; align-items:center; gap:10px;
+  }
+  h2::before{
+    content:""; width:5px; height:24px; background:var(--terra); border-radius:3px;
+  }
+  .desc{ color:var(--descr); font-size:14px; margin-bottom:22px; }
+
+  /* 全国地图 */
+  .map-card{
+    background:var(--card); border:1px solid var(--line); border-radius:24px;
+    padding:26px 22px; box-shadow:0 3px 14px rgba(90,70,50,.06);
+  }
+  .map-card svg{ width:100%; height:auto; display:block; }
+  .map-note{ text-align:center; font-size:13px; color:var(--muted); margin-top:12px; }
+
+  /* 城市卡片 */
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+  }
+  .city-card{
+    display:block; text-decoration:none; color:inherit;
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    overflow:hidden; transition:all .25s;
+  }
+  .city-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 24px rgba(90,70,50,.15);
+    border-color:var(--terra);
+  }
+  .city-card .cover{
+    height:120px; background:linear-gradient(135deg, var(--terra), var(--gold));
+    display:flex; align-items:center; justify-content:center;
+    font-size:54px; color:#fff;
+    position:relative;
+  }
+  .city-card .cover.s{ background:linear-gradient(135deg,#c2542e,#d9793f); }
+  .city-card .cover.c{ background:linear-gradient(135deg,#a4262c,#c89b3c); }
+  .city-card .cover.sh{ background:linear-gradient(135deg,#3d6b5e,#7ba05b); }
+  .city-card .cover .badge{
+    position:absolute; top:10px; right:10px;
+    background:rgba(255,255,255,.9); color:var(--ink);
+    font-size:11px; padding:3px 10px; border-radius:999px;
+    font-weight:700; letter-spacing:1px;
+  }
+  .city-card .body{ padding:20px 22px 22px; }
+  .city-card .city{
+    font-size:13px; color:var(--tea); font-weight:700;
+    letter-spacing:2px; margin-bottom:4px;
+  }
+  .city-card h3{
+    font-size:20px; font-weight:700; margin:2px 0 8px;
+  }
+  .city-card .lead{
+    color:var(--soft); font-size:14px; line-height:1.65; margin-bottom:12px;
+  }
+  .city-card .tags{
+    display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px;
+  }
+  .city-card .tag{
+    font-size:11.5px; color:var(--ink); background:var(--cream);
+    padding:2px 9px; border-radius:6px; border:1px solid var(--line);
+  }
+  .city-card .meta{
+    display:flex; gap:10px; color:var(--muted); font-size:12.5px;
+    padding-top:12px; border-top:1px dashed var(--line);
+  }
+  .city-card .meta span{ display:flex; align-items:center; gap:4px; }
+
+  /* 投稿入口 */
+  .contribute{
+    background:linear-gradient(135deg,#fdf3e7,#fff8f3);
+    border:1px solid var(--gold); border-radius:20px;
+    padding:28px 26px; text-align:center;
+  }
+  .contribute h3{
+    font-size:20px; font-weight:700; color:var(--terra); margin-bottom:10px;
+  }
+  .contribute p{ color:var(--soft); font-size:14.5px; margin-bottom:16px; }
+  .contribute .steps{
+    display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+    margin-top:14px;
+  }
+  .contribute .step{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:12px; padding:14px 18px; min-width:180px; text-align:left;
+  }
+  .contribute .step b{
+    color:var(--terra); font-size:18px; display:block; margin-bottom:4px;
+  }
+  .contribute .step small{ color:var(--muted); font-size:13px; }
+
+  /* Footer */
+  footer{
+    text-align:center; padding:36px 20px 48px;
+    color:var(--muted); font-size:13px; margin-top:40px;
+    border-top:1px solid var(--line);
+  }
+  footer .heart{ color:var(--terra); }
+  .stats-row{
+    display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+    margin-top:24px; font-size:13.5px; color:var(--soft);
+  }
+  .stats-row span{
+    background:rgba(255,255,255,.2); padding:6px 14px; border-radius:8px;
+  }
+
+  @media (max-width:600px){
+    .hero h1{ font-size:30px; letter-spacing:3px; }
+    .hero .sub{ font-size:15px; }
+    .hero .meta span{ font-size:13px; padding:6px 12px; }
+    .grid{ grid-template-columns:1fr; }
+    .contribute .steps{ flex-direction:column; }
+  }
+
+  @media print{
+    .hero{ background:#fff; color:var(--ink); padding:30px 20px; }
+    .hero::before{ display:none; }
+    body{ background:#fff; }
+    .city-card{ box-shadow:none; border:1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═════ 封面 ═════ -->
+<div class="hero">
+  <span class="tag">CITYWALKS · 半日漫游合集</span>
+  <h1>Citywalks</h1>
+  <div class="sub">一份攻略走透一座城 · 石库门 · 梧桐洋房 · 川西老巷</div>
+  <div class="meta">
+    <span>🏙 已收录 3 个城市片区</span>
+    <span>🚶 半日深度</span>
+    <span>📅 持续更新</span>
+    <span>🆓 纯静态 / GitHub Pages</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ═════ ① 全国示意图 ═════ -->
+<section>
+  <h2>① 全国示意图</h2>
+  <p class="desc">非比例示意图，标注已收录城市位置；具体方位以地图查询为准</p>
+  <div class="map-card">
+    <svg viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg"
+         role="img" aria-label="已收录城市分布">
+      <!-- 背景纹理：极简山河 -->
+      <defs>
+        <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1" fill="#efe0cd"/>
+        </pattern>
+      </defs>
+      <rect width="800" height="560" fill="url(#dots)"/>
+
+      <!-- 极简陆地轮廓（不画精确地图） -->
+      <path d="M 120 180
+               C 150 130, 220 90, 300 100
+               C 380 90, 450 100, 520 110
+               C 600 100, 680 130, 720 180
+               C 740 240, 720 320, 680 380
+               C 640 440, 560 470, 480 480
+               C 400 490, 320 480, 240 460
+               C 180 440, 130 400, 110 340
+               C 90 280, 100 220, 120 180 Z"
+            fill="#fbf6ef" stroke="#c9a97a" stroke-width="2"
+            stroke-dasharray="4 4" opacity="0.8"/>
+
+      <!-- 东部海浪 -->
+      <g stroke="#9bbcd0" stroke-width="2" fill="none" opacity="0.6">
+        <path d="M 730 200 Q 740 210, 730 220"/>
+        <path d="M 740 260 Q 750 270, 740 280"/>
+        <path d="M 735 320 Q 745 330, 735 340"/>
+        <path d="M 745 380 Q 755 390, 745 400"/>
+      </g>
+      <text x="755" y="170" font-size="12" fill="#9bbcd0" font-family="sans-serif" opacity="0.7">东海</text>
+
+      <!-- 西部山脊 -->
+      <g stroke="#a8967a" stroke-width="1.5" fill="none" opacity="0.5">
+        <path d="M 280 350 L 290 335 L 295 350"/>
+        <path d="M 320 380 L 330 365 L 335 380"/>
+        <path d="M 360 410 L 370 395 L 375 410"/>
+        <path d="M 400 430 L 410 415 L 415 430"/>
+      </g>
+      <text x="290" y="455" font-size="12" fill="#a8967a" font-family="sans-serif" opacity="0.7">西部山系</text>
+
+      <!-- 长江虚线示意 -->
+      <path d="M 280 250 Q 400 290, 580 320 Q 640 340, 700 380"
+            fill="none" stroke="#b8d4e3" stroke-width="2"
+            stroke-dasharray="3 4" opacity="0.6"/>
+      <text x="430" y="280" font-size="11" fill="#7fa8be" font-family="sans-serif" opacity="0.8" font-style="italic">长江示意</text>
+
+      <!-- 已收录城市：成都 -->
+      <g font-family="PingFang SC,Microsoft YaHei,sans-serif">
+        <circle cx="340" cy="380" r="22" fill="#a4262c" opacity="0.95"/>
+        <text x="340" y="388" font-size="22" text-anchor="middle" fill="#fff">🐼</text>
+        <text x="340" y="418" font-size="14" text-anchor="middle"
+              fill="#2d2a26" font-weight="bold">成都</text>
+        <text x="340" y="436" font-size="11" text-anchor="middle" fill="#5c564d">宽窄巷子</text>
+        <line x1="340" y1="358" x2="340" y2="402" stroke="#a4262c"
+              stroke-width="2" opacity="0.4"/>
+      </g>
+
+      <!-- 已收录城市：上海（2 个点聚拢） -->
+      <g font-family="PingFang SC,Microsoft YaHei,sans-serif">
+        <!-- 外圈：城市群 -->
+        <circle cx="640" cy="340" r="42" fill="none"
+                stroke="#3d6b5e" stroke-width="2" stroke-dasharray="4 3" opacity="0.5"/>
+        <!-- 田子坊 -->
+        <circle cx="640" cy="340" r="20" fill="#c2542e"/>
+        <text x="640" y="348" font-size="18" text-anchor="middle" fill="#fff">🏮</text>
+        <text x="640" y="375" font-size="14" text-anchor="middle"
+              fill="#2d2a26" font-weight="bold">上海</text>
+        <text x="640" y="392" font-size="11" text-anchor="middle" fill="#5c564d">田子坊 · 武康路</text>
+        <!-- 武康路（同城市） -->
+        <circle cx="595" cy="375" r="14" fill="#3d6b5e"/>
+        <text x="595" y="380" font-size="14" text-anchor="middle" fill="#fff">🌳</text>
+      </g>
+
+      <!-- 图例 -->
+      <g font-family="PingFang SC,Microsoft YaHei,sans-serif" font-size="12">
+        <circle cx="120" cy="500" r="6" fill="#c2542e"/>
+        <text x="132" y="504" fill="#5c564d">已收录城市</text>
+        <circle cx="120" cy="524" r="6" fill="#3d6b5e"/>
+        <text x="132" y="528" fill="#5c564d">同城市片区</text>
+        <text x="280" y="504" fill="#9a9288" font-size="11">⋯ 长江示意（非比例）</text>
+        <text x="280" y="528" fill="#9a9288" font-size="11">⚠ 城市相对位置，不画精确省界</text>
+      </g>
+
+      <!-- 指北针 -->
+      <g transform="translate(750,40)">
+        <circle r="14" fill="#fff" stroke="#c2542e" stroke-width="2"/>
+        <text y="4" font-size="12" text-anchor="middle" fill="#c2542e" font-weight="bold">N</text>
+        <path d="M0,-11 L3,0 L0,-2 L-3,0 Z" fill="#c2542e"/>
+      </g>
+    </svg>
+    <p class="map-note">🗺 已收录：上海（2 片区）｜成都（1 片区） · 持续扩展中</p>
+  </div>
+</section>
+
+<!-- ═════ ② 已收录城市 ═════ -->
+<section>
+  <h2>② 已收录城市</h2>
+  <p class="desc">每个城市一份完整攻略 · 半日 3-5 小时 · 直接落地可走</p>
+  <div class="grid">
+
+    <!-- 上海·田子坊 -->
+    <a class="city-card" href="shanghai/tianzifang/">
+      <div class="cover s">
+        🏮
+        <span class="badge">SHANGHAI · 上海</span>
+      </div>
+      <div class="body">
+        <div class="city">SHANGHAI · 上海</div>
+        <h3>田子坊 Citywalk</h3>
+        <p class="lead">石库门里弄里的烟火气，弄堂、咖啡馆、艺术工作室三层叠合，藏着 90 年上海近代史。</p>
+        <div class="tags">
+          <span class="tag">📷 摄影</span>
+          <span class="tag">☕ 咖啡</span>
+          <span class="tag">🍜 美食</span>
+          <span class="tag">🏛 建筑</span>
+        </div>
+        <div class="meta">
+          <span>⏱ 4.5 小时</span>
+          <span>📍 泰康路 210 弄</span>
+          <span>👥 1-2 人</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 上海·武康路 -->
+    <a class="city-card" href="shanghai/wukang/">
+      <div class="cover sh">
+        🌳
+        <span class="badge">SHANGHAI · 上海</span>
+      </div>
+      <div class="body">
+        <div class="city">SHANGHAI · 上海</div>
+        <h3>武康路 Citywalk</h3>
+        <p class="lead">梧桐树荫下的法租界旧时光，武康大楼、罗密欧阳台、巴金故居，一栋栋老洋房串起半部民国文人史。</p>
+        <div class="tags">
+          <span class="tag">📷 摄影</span>
+          <span class="tag">🌳 梧桐</span>
+          <span class="tag">☕ 咖啡</span>
+          <span class="tag">🏛 建筑</span>
+        </div>
+        <div class="meta">
+          <span>⏱ 3 小时</span>
+          <span>📍 武康路 376 号起</span>
+          <span>👥 1-2 人</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 成都·宽窄巷子 -->
+    <a class="city-card" href="chengdu/kuanzhai/">
+      <div class="cover c">
+        🐼
+        <span class="badge">CHENGDU · 成都</span>
+      </div>
+      <div class="body">
+        <div class="city">CHENGDU · 成都</div>
+        <h3>宽窄巷子 Citywalk</h3>
+        <p class="lead">清代川西民居的三条平行巷子，老成都的茶馆、掏耳朵、川剧、小吃——一座会客厅，半部成都烟火录。</p>
+        <div class="tags">
+          <span class="tag">🍵 茶馆</span>
+          <span class="tag">🎭 川剧</span>
+          <span class="tag">🍜 美食</span>
+          <span class="tag">🏛 建筑</span>
+        </div>
+        <div class="meta">
+          <span>⏱ 4 小时</span>
+          <span>📍 长顺街附近</span>
+          <span>👥 1-2 人</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ═════ ③ 投稿入口 ═════ -->
+<section>
+  <h2>③ 投稿 / 反馈</h2>
+  <p class="desc">想看 X 城？现有攻略想补漏？这里是入口。</p>
+  <div class="contribute">
+    <h3>共建这个合集 · Open Content</h3>
+    <p>每个城市的攻略以 GitHub 仓库单文件夹管理，Pull Request 即贡献。</p>
+    <div class="steps">
+      <div class="step">
+        <b>① Fork</b>
+        <small>在 GitHub fork 本仓库</small>
+      </div>
+      <div class="step">
+        <b>② 加城市</b>
+        <small>在 <code>shanghai/</code> 或新城市目录下新建 6 文件</small>
+      </div>
+      <div class="step">
+        <b>③ 提 PR</b>
+        <small>合并后自动部署到 GitHub Pages</small>
+      </div>
+    </div>
+    <p style="margin-top:18px;font-size:13px;color:var(--muted)">
+      内容模板与生成 Skill 见项目 README · 任何"半日漫游"主题都欢迎
+    </p>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <p>Made with <span class="heart">♥</span> · 持续收录每一座值得半日的城市</p>
+  <div class="stats-row">
+    <span>🏙 已收录 3 城</span>
+    <span>📄 静态 HTML</span>
+    <span>🚀 GitHub Pages</span>
+    <span>📅 整理日期：2026.09.25</span>
+  </div>
+  <p style="margin-top:12px;color:var(--muted);font-size:12px">
+    内容数据均来自公开来源，动态信息请以现场为准
+  </p>
+</footer>
+
+</body>
+</html>
